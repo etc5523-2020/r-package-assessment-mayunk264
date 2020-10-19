@@ -61,11 +61,7 @@ shinyUI(dashboardPage(skin="green",
                                   br(),
                                   plotOutput("statePlot"),
                                   br(),
-                                  box(selectInput("province",
-                                                  "Please select a state",
-                                                  choices = c("Australian Capital Territory", "New South Wales", "Northern Territory", "Queensland", "South Australia","Victoria","Western Australia")
-                                                  
-                                  ))
+                                  box(stateSelectInput())
                           ),
                           
                           tabItem(tabName = "yepper",
