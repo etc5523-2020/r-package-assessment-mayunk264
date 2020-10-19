@@ -3,7 +3,8 @@ library(plotly)
 library(lubridate)
 library(coronavirus)
 library(shinydashboard)
-library(tidyverse)
+library(ggplot2)
+library(dplyr)
 library(kableExtra)
 
 

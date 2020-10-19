@@ -18,3 +18,12 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports: 
+    shiny,
+    plotly,
+    lubridate,
+    coronavirus,
+    shinydashboard,
+    ggplot2,
+    dplyr,
+    kableExtra
