@@ -26,4 +26,5 @@ Imports:
     shinydashboard,
     ggplot2,
     dplyr,
-    kableExtra
+    kableExtra,
+    tidyr
