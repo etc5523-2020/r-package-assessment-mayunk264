@@ -1,5 +1,5 @@
 Package: ozcovid
-Title: Launch The Shiny Application 'Coronavirus In Australia'.
+Title: Launch The Shiny Application 'Coronavirus In Australia'
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Mayunk",

@@ -1,4 +1,4 @@
 library(testthat)
-library(yourPkg)
+library(ozcovid)
 
-test_check("yourPkg")
+test_check("ozcovid")
