@@ -1,3 +1,12 @@
+#' Refactored output$AboutSection server code into function 'about_app'
+#' 
+#' @description shows user About section within the shiny application 'Coronavirus in Australia'
+#' 
+#' @return This function will not return anything within the console. Its purpose is to demonstrate the refactoring of the previous 'output$AboutSection' server code into a new 'about_app' function.
+#'
+#'@example
+#'about_app()
+#'
 #'@export
 about_app <- function() {
   renderText(paste0("<p>Hello and welcome to the &apos;Coronavirus in Australia&apos; dashboard!</p>
