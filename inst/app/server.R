@@ -37,7 +37,6 @@ oz_table_df <- coronavirus::coronavirus %>%
            `Cumulative Recovered`=cum_recovered
     )
 
-# Define server logic required to draw a histogram
 shinyServer(function(input, output) {
 
     output$statePlot <- renderPlot({
