@@ -1,4 +1,4 @@
-#'Refactored 'selectInput' ui code
+#'Refactored 'selectInput' ui code into 'stateSelectInput' function
 #'
 #'@description Allows user to select state/territory of choice within shiny app to generate graph of confirmed coronavirus cases over time.
 #'

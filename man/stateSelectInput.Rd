@@ -2,7 +2,7 @@
 % Please edit documentation in R/stateSelectInput.R
 \name{stateSelectInput}
 \alias{stateSelectInput}
-\title{Refactored 'selectInput' ui code}
+\title{Refactored 'selectInput' ui code into 'stateSelectInput' function}
 \usage{
 stateSelectInput()
 }
