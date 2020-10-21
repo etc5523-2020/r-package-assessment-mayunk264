@@ -19,13 +19,13 @@ Suggests:
     rmarkdown,
     plotly,
     lubridate,
-    coronavirus,
     shinydashboard,
     kableExtra,
-    tidyr
+    tidyr,
+    ggplot2,
+    dplyr,
+    coronavirus
 VignetteBuilder: knitr
 Imports: 
-    shiny,
-    ggplot2,
-    dplyr
+    shiny
 
