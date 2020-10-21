@@ -39,16 +39,7 @@ oz_table_df <- coronavirus::coronavirus %>%
 
 shinyServer(function(input, output) {
 
-    output$statePlot <- renderPlot({
-        
-        
-        ggplot(filter(oz_covid_df,province==input$province)) +
-            geom_line(aes(x=date,y=cases)) +
-            xlab("Date") +
-            ylab("Confirmed Cases") +
-            ggtitle("Confirmed Coronavirus Cases")
-        
-    })
+    output$statePlot <- stateRenderPlot()
     
     output$vicDeathPlot <- renderPlotly({
         
