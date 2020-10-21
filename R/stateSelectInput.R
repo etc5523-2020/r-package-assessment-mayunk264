@@ -2,10 +2,12 @@
 #'
 #'@description Allows user to select state/territory of choice within shiny app to generate graph of confirmed coronavirus cases over time.
 #'
-#'@return This function will not return anything within the console. Its purpose is to demonstrate the refactoring of the previous 'selectInput' ui code into a new 'stateSelectInput' function.
+#'@return This function will not return anything meaningful for the end-user within the console. Its purpose is to demonstrate the refactoring of the previous 'selectInput' ui code into a new 'stateSelectInput' function. The code for the function may be used as a template by the user to include their own 'selectInput' UI within a different shiny app.
 #'
 #'@example
 #'stateSelectInput()
+#'
+#'@import shiny
 #'
 #'@export
 stateSelectInput <- function() {
