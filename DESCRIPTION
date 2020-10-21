@@ -16,10 +16,7 @@ RoxygenNote: 7.1.1
 Suggests: 
     testthat,
     knitr,
-    rmarkdown
-VignetteBuilder: knitr
-Imports: 
-    shiny,
+    rmarkdown,
     plotly,
     lubridate,
     coronavirus,
@@ -28,3 +25,7 @@ Imports:
     dplyr,
     kableExtra,
     tidyr
+VignetteBuilder: knitr
+Imports: 
+    shiny
+
