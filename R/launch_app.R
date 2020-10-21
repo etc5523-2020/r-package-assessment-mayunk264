@@ -7,6 +7,8 @@
 #' @example
 #' launch_app()
 #' 
+#' @import shiny
+#' 
 #' @export
 launch_app <- function() {
   appDir <- system.file("app", package = "ozcovid")
