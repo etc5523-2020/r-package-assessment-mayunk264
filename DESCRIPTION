@@ -21,11 +21,11 @@ Suggests:
     lubridate,
     coronavirus,
     shinydashboard,
-    ggplot2,
-    dplyr,
     kableExtra,
     tidyr
 VignetteBuilder: knitr
 Imports: 
-    shiny
+    shiny,
+    ggplot2,
+    dplyr
 
