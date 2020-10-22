@@ -5,18 +5,24 @@
 \alias{oz_covid_data}
 \title{Australia's Coronavirus data}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 192 rows and 7 columns.
+a tibble with 192 observations and 7 variables:
+\itemize{
+\item \strong{date}: the date on a particular day
+\item \strong{'Daily Confirmed'}: the daily confirmed coronavirus cases in Australia on that given date
+\item \strong{'Daily Death'}: the daily confirmed coronavirus deaths in Australia on that given date
+\item \strong{'Daily Recovered'}: the daily confirmed coronavirus drecoveries in Australia on that given date
+\item \strong{'Cumulative Confirmed'}: the cumulative confirmed coronavirus cases in Australia on that given date
+\item \strong{'Cumulative Deaths'}: the cumulative confirmed coronavirus deaths in Australia on that given date
+\item \strong{'Cumulative Recovered'}: the cumulative confirmed coronavirus recoveries in Australia on that given date
+}
 }
 \source{
-The dataset is a processed version of Rami Krispin's c'oronavirus' dataset from the 'coronavirus package' which can be found here: https://github.com/RamiKrispin/coronavirus
+The dataset is a processed version of Rami Krispin's 'coronavirus' dataset from the 'coronavirus package' which can be found here: https://github.com/RamiKrispin/coronavirus
 }
 \usage{
 oz_covid_data
 }
 \description{
-The dataset contains a date variable and corresponding variables for total 'Daily Confirmed' coronavirus cases, 'Daily Death' related to coronavirus, 'Daily Recovered' coronavirus cases, 'Cumulative Confirmed' coronavirus cases, 'Cumulative Deaths' related to coronavirus and 'Cumulative Recovered' coronavirus cases. The 'date' column is of type <date> and the remaining columns are of type <int>.
-}
-\details{
 This dataset contains Australia's daily and cumulative coronavirus data for 2020
 }
 \keyword{datasets}
