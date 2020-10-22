@@ -1,8 +1,8 @@
 ---
-title: "Launch The Shiny Application 'Coronavirus In Australia"
+title: "Interact with Australia's 2020 Coronavirus Data"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Launch The Shiny Application 'Coronavirus In Australia}
+  %\VignetteIndexEntry{Interact with Australia's 2020 Coronavirus Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,6 +14,63 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Welcome
+
+Welcome to the 'ozcovid' package! The purpose of this package is to allow you - the user - to interact with Australia's 2020 coronavirus data. The package aims to do this in two main ways - a shiny application called 'Coronavirus in Australia' and a dataset called 'oz_covid_data'.
+
+## Setup 
+
+First you will need to install and load the package. See below:
+
 ```{r setup}
+#install package
+devtools::install_github("etc5523-2020/r-package-assessment-mayunk264")
+
+#load package
 library(ozcovid)
 ```
+
+## Functions within Package
+
+### load_app() function
+
+The load_app() function is the centrepiece of the package. When executed, the function will return a Shiny application entitled 'Coronavirus in Australia'.
+
+There are three main sections of the application:
+
+1. Confirmed Cases by state: a graph displaying confirmed coronavirus cases by state over time where the user is able to select their state of interest.
+2. Coronavirus Summary Table: a table which displays daily and cumulative coronavirus confirmed cases, deaths and recoveries by date where the user is able to select their date of interest.
+3. Deaths In Victoria: an interative graph of Victoria's coronavirus-related deaths where the user is able to click on a data point of their choice which in turn generates a sentence desrcibing the date and the deaths that occured on that date in Victoria.
+
+The application can be executed as such:
+
+```{r launch-app, eval=FALSE}
+#launch the Shiny application
+ozcovid::launch_app()
+```
+
+### oz_covid_data dataset
+
+The 'oz_covid_data' data table summarises Australia's 2020 coronavirus data. 
+
+The dataset is a processed version of Rami Krispin's coronavirus' dataset from the ['coronavirus' package](https://github.com/RamiKrispin/coronavirus.). If the dataset looks familar to you, it is because it is inspired by the 'Coronavirus Summary Table' from the 'Coronavirus in Australia' Shiny application.
+
+The dataset contains a date variable and corresponding variables for total 'Daily Confirmed' coronavirus cases, 'Daily Death' related to coronavirus, 'Daily Recovered' coronavirus cases, 'Cumulative Confirmed' coronavirus cases, 'Cumulative Deaths' related to coronavirus and 'Cumulative Recovered' coronavirus cases. The 'date' column is of type <date> and the remaining columns are of type <int>.
+
+The dataset can be generated like so:
+
+```{r oz-covid-data, eval=FALSE}
+#generate the oz_covid_data dataset
+ozcovid::oz_covid_data
+```
+
+### stateSelectInput() and vicRenderText() functions
+
+The 'stateSelectInput' and 'vicRenderText' functions are functions that contain refactored code from the user interface and server logic of the Shiny application 'Coronavirus in Australia'
+
+These two functions - when executed in the console - will not generate anything meaningful for a user looking to only interact with the Shiny app or dataset. However, if a user is looking to use the code underlying the function to assist in the generation of their own Shiny application, the code may be of use.
+
+## Issues
+
+If you have any issues you would like to submit, please do so in the [Issues tab of the package's GitHub repository](https://github.com/etc5523-2020/r-package-assessment-mayunk264/issues).
+
