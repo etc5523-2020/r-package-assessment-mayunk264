@@ -15,6 +15,76 @@
 <title>Interact with Australia’s 2020 Coronavirus Data</title>
 
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      a.sourceLine { display: inline-block; line-height: 1.25; }
+  a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+  a.sourceLine:empty { height: 1.2em; }
+  .sourceCode { overflow: visible; }
+  code.sourceCode { white-space: pre; position: relative; }
+  div.sourceCode { margin: 1em 0; }
+  pre.sourceCode { margin: 0; }
+  @media screen {
+  div.sourceCode { overflow: auto; }
+  }
+  @media print {
+  code.sourceCode { white-space: pre-wrap; }
+  a.sourceLine { text-indent: -1em; padding-left: 1em; }
+  }
+  pre.numberSource a.sourceLine
+    { position: relative; left: -4em; }
+  pre.numberSource a.sourceLine::before
+    { content: attr(data-line-number);
+      position: relative; left: -1em; text-align: right; vertical-align: baseline;
+      border: none; pointer-events: all; display: inline-block;
+      -webkit-touch-callout: none; -webkit-user-select: none;
+      -khtml-user-select: none; -moz-user-select: none;
+      -ms-user-select: none; user-select: none;
+      padding: 0 4px; width: 4em;
+      color: #aaaaaa;
+    }
+  pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+  div.sourceCode
+    {  }
+  @media screen {
+  a.sourceLine::before { text-decoration: underline; }
+  }
+  code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+  code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+  code span.at { color: #7d9029; } /* Attribute */
+  code span.bn { color: #40a070; } /* BaseN */
+  code span.bu { } /* BuiltIn */
+  code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+  code span.ch { color: #4070a0; } /* Char */
+  code span.cn { color: #880000; } /* Constant */
+  code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+  code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+  code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+  code span.dt { color: #902000; } /* DataType */
+  code span.dv { color: #40a070; } /* DecVal */
+  code span.er { color: #ff0000; font-weight: bold; } /* Error */
+  code span.ex { } /* Extension */
+  code span.fl { color: #40a070; } /* Float */
+  code span.fu { color: #06287e; } /* Function */
+  code span.im { } /* Import */
+  code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+  code span.op { color: #666666; } /* Operator */
+  code span.ot { color: #007020; } /* Other */
+  code span.pp { color: #bc7a00; } /* Preprocessor */
+  code span.sc { color: #4070a0; } /* SpecialChar */
+  code span.ss { color: #bb6688; } /* SpecialString */
+  code span.st { color: #4070a0; } /* String */
+  code span.va { color: #19177c; } /* Variable */
+  code span.vs { color: #4070a0; } /* VerbatimString */
+  code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
@@ -310,49 +380,102 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>First you will need to install and load the package. See below:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">#install package</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;etc5523-2020/r-package-assessment-mayunk264&quot;</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; Using github PAT from envvar GITHUB_PAT</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; Downloading GitHub repo etc5523-2020/r-package-assessment-mayunk264@HEAD</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt; xfun    (0.16  -&gt; 0.18 ) [CRAN]</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt; stringi (1.4.6 -&gt; 1.5.3) [CRAN]</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt; knitr   (1.29  -&gt; 1.30 ) [CRAN]</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; clipr   (0.7.0 -&gt; 0.7.1) [CRAN]</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt; DT      (0.15  -&gt; 0.16 ) [CRAN]</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt; Installing 5 packages: xfun, stringi, knitr, clipr, DT</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt; Installing packages into '/private/var/folders/gs/wh76gs7n2gsfbf9rqzrg1ygm0000gn/T/RtmpmCSuuD/temp_libpathfed2714d7f96'</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt; (as 'lib' is unspecified)</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt; The downloaded binary packages are in</span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt;  /var/folders/gs/wh76gs7n2gsfbf9rqzrg1ygm0000gn/T//RtmpmCSuuD/downloaded_packages</span></a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt;   </span></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17">   checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>gs<span class="op">/</span>wh76gs7n2gsfbf9rqzrg1ygm0000gn<span class="op">/</span>T<span class="op">/</span>RtmpmCSuuD<span class="op">/</span>remotesfed22959e234<span class="op">/</span>etc5523<span class="dv">-2020</span><span class="op">-</span>r<span class="op">-</span>package<span class="op">-</span>assessment<span class="op">-</span>mayunk264<span class="op">-</span>35680f2<span class="op">/</span>DESCRIPTION’ ...</a>
-<a class="sourceLine" id="cb1-18" data-line-number="18">  </a>
-<a class="sourceLine" id="cb1-19" data-line-number="19">✓  checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>gs<span class="op">/</span>wh76gs7n2gsfbf9rqzrg1ygm0000gn<span class="op">/</span>T<span class="op">/</span>RtmpmCSuuD<span class="op">/</span>remotesfed22959e234<span class="op">/</span>etc5523<span class="dv">-2020</span><span class="op">-</span>r<span class="op">-</span>package<span class="op">-</span>assessment<span class="op">-</span>mayunk264<span class="op">-</span>35680f2<span class="op">/</span>DESCRIPTION’</a>
-<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-21" data-line-number="21">  </a>
-<a class="sourceLine" id="cb1-22" data-line-number="22">─  preparing ‘ozcovid’<span class="op">:</span></a>
-<a class="sourceLine" id="cb1-23" data-line-number="23"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-24" data-line-number="24"><span class="st">  </span></a>
-<a class="sourceLine" id="cb1-25" data-line-number="25"><span class="st">   </span>checking DESCRIPTION meta<span class="op">-</span>information ...</a>
-<a class="sourceLine" id="cb1-26" data-line-number="26">  </a>
-<a class="sourceLine" id="cb1-27" data-line-number="27">✓  checking DESCRIPTION meta<span class="op">-</span>information</a>
-<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-29" data-line-number="29">  </a>
-<a class="sourceLine" id="cb1-30" data-line-number="30">─  checking <span class="cf">for</span> LF line<span class="op">-</span>endings <span class="cf">in</span> source and make files and shell scripts</a>
-<a class="sourceLine" id="cb1-31" data-line-number="31"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-32" data-line-number="32">  </a>
-<a class="sourceLine" id="cb1-33" data-line-number="33">─  checking <span class="cf">for</span> empty or unneeded directories</a>
-<a class="sourceLine" id="cb1-34" data-line-number="34"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-35" data-line-number="35">  </a>
-<a class="sourceLine" id="cb1-36" data-line-number="36">─  building ‘ozcovid_<span class="dv">0</span>.<span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">9000.</span>tar.gz’</a>
-<a class="sourceLine" id="cb1-37" data-line-number="37"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-38" data-line-number="38">  </a>
-<a class="sourceLine" id="cb1-39" data-line-number="39">   </a>
-<a class="sourceLine" id="cb1-40" data-line-number="40"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-41" data-line-number="41"><span class="co">#&gt; Installing package into '/private/var/folders/gs/wh76gs7n2gsfbf9rqzrg1ygm0000gn/T/RtmpmCSuuD/temp_libpathfed2714d7f96'</span></a>
-<a class="sourceLine" id="cb1-42" data-line-number="42"><span class="co">#&gt; (as 'lib' is unspecified)</span></a>
-<a class="sourceLine" id="cb1-43" data-line-number="43"></a>
-<a class="sourceLine" id="cb1-44" data-line-number="44"><span class="co">#load package</span></a>
-<a class="sourceLine" id="cb1-45" data-line-number="45"><span class="kw">library</span>(ozcovid)</a></code></pre></div>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; Downloading GitHub repo etc5523-2020/r-package-assessment-mayunk264@HEAD</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; ps          (1.3.4        -&gt; 1.4.0       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt; backports   (1.1.9        -&gt; 1.1.10      ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt; callr       (3.4.4        -&gt; 3.5.1       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt; withr       (2.2.0        -&gt; 2.3.0       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; digest      (0.6.25       -&gt; 0.6.26      ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt; cli         (2.0.2        -&gt; 2.1.0       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt; xml2        (1.3.0        -&gt; 1.3.2       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt; purrr       (0.3.3        -&gt; 0.3.4       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt; htmlwidgets (1.5.1        -&gt; 1.5.2       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt; sys         (3.3          -&gt; 3.4         ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt; openssl     (1.4.1        -&gt; 1.4.3       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt; tibble      (3.0.3        -&gt; 3.0.4       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt; git2r       (0.26.1       -&gt; 0.27.1      ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt; fs          (1.4.1        -&gt; 1.5.0       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">#&gt; clipr       (0.7.0        -&gt; 0.7.1       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="co">#&gt; DT          (0.15         -&gt; 0.16        ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#&gt; tidyselect  (1.0.0        -&gt; 1.1.0       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#&gt; dplyr       (0.8.5        -&gt; 1.0.2       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co">#&gt; labeling    (0.3          -&gt; 0.4.2       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-23" data-line-number="23"><span class="co">#&gt; data.table  (1.12.8       -&gt; 1.13.2      ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-24" data-line-number="24"><span class="co">#&gt; tidyr       (1.0.2        -&gt; 1.1.2       ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-25" data-line-number="25"><span class="co">#&gt; coronavirus (915b52a68... -&gt; 51a7466a9...) [GitHub]</span></a>
+<a class="sourceLine" id="cb1-26" data-line-number="26"><span class="co">#&gt; Installing 21 packages: ps, backports, callr, withr, digest, cli, xml2, purrr, htmlwidgets, sys, openssl, tibble, git2r, fs, clipr, DT, tidyselect, dplyr, labeling, data.table, tidyr</span></a>
+<a class="sourceLine" id="cb1-27" data-line-number="27"><span class="co">#&gt; Installing packages into '/private/var/folders/3t/k59b5_hd6jl56x3xrbc5wkcc0000gn/T/RtmpCr25sg/temp_libpathd5eed7f4a43'</span></a>
+<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="co">#&gt; (as 'lib' is unspecified)</span></a>
+<a class="sourceLine" id="cb1-29" data-line-number="29"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-30" data-line-number="30"><span class="co">#&gt; The downloaded binary packages are in</span></a>
+<a class="sourceLine" id="cb1-31" data-line-number="31"><span class="co">#&gt;  /var/folders/3t/k59b5_hd6jl56x3xrbc5wkcc0000gn/T//RtmpCr25sg/downloaded_packages</span></a>
+<a class="sourceLine" id="cb1-32" data-line-number="32"><span class="co">#&gt; Downloading GitHub repo RamiKrispin/coronavirus@master</span></a>
+<a class="sourceLine" id="cb1-33" data-line-number="33"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-34" data-line-number="34"><span class="co">#&gt;   </span></a>
+<a class="sourceLine" id="cb1-35" data-line-number="35">   checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>3t<span class="op">/</span>k59b5_hd6jl56x3xrbc5wkcc0000gn<span class="op">/</span>T<span class="op">/</span>RtmpCr25sg<span class="op">/</span>remotesd5ee25807675<span class="op">/</span>RamiKrispin<span class="op">-</span>coronavirus<span class="op">-</span>51a7466<span class="op">/</span>DESCRIPTION’ ...</a>
+<a class="sourceLine" id="cb1-36" data-line-number="36">  </a>
+<a class="sourceLine" id="cb1-37" data-line-number="37">✓  checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>3t<span class="op">/</span>k59b5_hd6jl56x3xrbc5wkcc0000gn<span class="op">/</span>T<span class="op">/</span>RtmpCr25sg<span class="op">/</span>remotesd5ee25807675<span class="op">/</span>RamiKrispin<span class="op">-</span>coronavirus<span class="op">-</span>51a7466<span class="op">/</span>DESCRIPTION’ (626ms)</a>
+<a class="sourceLine" id="cb1-38" data-line-number="38"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-39" data-line-number="39">  </a>
+<a class="sourceLine" id="cb1-40" data-line-number="40">─  preparing ‘coronavirus’<span class="op">:</span></a>
+<a class="sourceLine" id="cb1-41" data-line-number="41"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-42" data-line-number="42"><span class="st">  </span></a>
+<a class="sourceLine" id="cb1-43" data-line-number="43"><span class="st">   </span>checking DESCRIPTION meta<span class="op">-</span>information ...</a>
+<a class="sourceLine" id="cb1-44" data-line-number="44">  </a>
+<a class="sourceLine" id="cb1-45" data-line-number="45">   checking DESCRIPTION meta<span class="op">-</span>information ... </a>
+<a class="sourceLine" id="cb1-46" data-line-number="46">  </a>
+<a class="sourceLine" id="cb1-47" data-line-number="47">✓  checking DESCRIPTION meta<span class="op">-</span>information</a>
+<a class="sourceLine" id="cb1-48" data-line-number="48"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-49" data-line-number="49">  </a>
+<a class="sourceLine" id="cb1-50" data-line-number="50">─  checking <span class="cf">for</span> LF line<span class="op">-</span>endings <span class="cf">in</span> source and make files and shell scripts</a>
+<a class="sourceLine" id="cb1-51" data-line-number="51"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-52" data-line-number="52">  </a>
+<a class="sourceLine" id="cb1-53" data-line-number="53">─  checking <span class="cf">for</span> empty or unneeded directories</a>
+<a class="sourceLine" id="cb1-54" data-line-number="54"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-55" data-line-number="55">  </a>
+<a class="sourceLine" id="cb1-56" data-line-number="56">─  looking to see <span class="cf">if</span> a ‘data<span class="op">/</span>datalist’ file should be added</a>
+<a class="sourceLine" id="cb1-57" data-line-number="57"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-58" data-line-number="58">  </a>
+<a class="sourceLine" id="cb1-59" data-line-number="59">─  building ‘coronavirus_<span class="dv">0</span>.<span class="dv">3</span>.<span class="dv">0</span>.<span class="fl">9000.</span>tar.gz’</a>
+<a class="sourceLine" id="cb1-60" data-line-number="60"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-61" data-line-number="61">  </a>
+<a class="sourceLine" id="cb1-62" data-line-number="62">   </a>
+<a class="sourceLine" id="cb1-63" data-line-number="63"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-64" data-line-number="64"><span class="co">#&gt; Installing package into '/private/var/folders/3t/k59b5_hd6jl56x3xrbc5wkcc0000gn/T/RtmpCr25sg/temp_libpathd5eed7f4a43'</span></a>
+<a class="sourceLine" id="cb1-65" data-line-number="65"><span class="co">#&gt; (as 'lib' is unspecified)</span></a>
+<a class="sourceLine" id="cb1-66" data-line-number="66"><span class="co">#&gt;   </span></a>
+<a class="sourceLine" id="cb1-67" data-line-number="67">   checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>3t<span class="op">/</span>k59b5_hd6jl56x3xrbc5wkcc0000gn<span class="op">/</span>T<span class="op">/</span>RtmpCr25sg<span class="op">/</span>remotesd5ee4026e92<span class="op">/</span>etc5523<span class="dv">-2020</span><span class="op">-</span>r<span class="op">-</span>package<span class="op">-</span>assessment<span class="op">-</span>mayunk264<span class="fl">-368e0</span>b9<span class="op">/</span>DESCRIPTION’ ...</a>
+<a class="sourceLine" id="cb1-68" data-line-number="68">  </a>
+<a class="sourceLine" id="cb1-69" data-line-number="69">   checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>3t<span class="op">/</span>k59b5_hd6jl56x3xrbc5wkcc0000gn<span class="op">/</span>T<span class="op">/</span>RtmpCr25sg<span class="op">/</span>remotesd5ee4026e92<span class="op">/</span>etc5523<span class="dv">-2020</span><span class="op">-</span>r<span class="op">-</span>package<span class="op">-</span>assessment<span class="op">-</span>mayunk264<span class="fl">-368e0</span>b9<span class="op">/</span>DESCRIPTION’ ... </a>
+<a class="sourceLine" id="cb1-70" data-line-number="70">  </a>
+<a class="sourceLine" id="cb1-71" data-line-number="71">✓  checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>3t<span class="op">/</span>k59b5_hd6jl56x3xrbc5wkcc0000gn<span class="op">/</span>T<span class="op">/</span>RtmpCr25sg<span class="op">/</span>remotesd5ee4026e92<span class="op">/</span>etc5523<span class="dv">-2020</span><span class="op">-</span>r<span class="op">-</span>package<span class="op">-</span>assessment<span class="op">-</span>mayunk264<span class="fl">-368e0</span>b9<span class="op">/</span>DESCRIPTION’ (671ms)</a>
+<a class="sourceLine" id="cb1-72" data-line-number="72"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-73" data-line-number="73">  </a>
+<a class="sourceLine" id="cb1-74" data-line-number="74">─  preparing ‘ozcovid’<span class="op">:</span></a>
+<a class="sourceLine" id="cb1-75" data-line-number="75"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-76" data-line-number="76"><span class="st">  </span></a>
+<a class="sourceLine" id="cb1-77" data-line-number="77"><span class="st">   </span>checking DESCRIPTION meta<span class="op">-</span>information ...</a>
+<a class="sourceLine" id="cb1-78" data-line-number="78">  </a>
+<a class="sourceLine" id="cb1-79" data-line-number="79">✓  checking DESCRIPTION meta<span class="op">-</span>information</a>
+<a class="sourceLine" id="cb1-80" data-line-number="80"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-81" data-line-number="81">  </a>
+<a class="sourceLine" id="cb1-82" data-line-number="82">─  checking <span class="cf">for</span> LF line<span class="op">-</span>endings <span class="cf">in</span> source and make files and shell scripts</a>
+<a class="sourceLine" id="cb1-83" data-line-number="83"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-84" data-line-number="84">  </a>
+<a class="sourceLine" id="cb1-85" data-line-number="85">─  checking <span class="cf">for</span> empty or unneeded directories</a>
+<a class="sourceLine" id="cb1-86" data-line-number="86"><span class="co">#&gt; ─  looking to see if a ‘data/datalist’ file should be added</span></a>
+<a class="sourceLine" id="cb1-87" data-line-number="87"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-88" data-line-number="88">  </a>
+<a class="sourceLine" id="cb1-89" data-line-number="89">─  building ‘ozcovid_<span class="dv">0</span>.<span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">9000.</span>tar.gz’</a>
+<a class="sourceLine" id="cb1-90" data-line-number="90"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-91" data-line-number="91">  </a>
+<a class="sourceLine" id="cb1-92" data-line-number="92">   </a>
+<a class="sourceLine" id="cb1-93" data-line-number="93"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-94" data-line-number="94"><span class="co">#&gt; Installing package into '/private/var/folders/3t/k59b5_hd6jl56x3xrbc5wkcc0000gn/T/RtmpCr25sg/temp_libpathd5eed7f4a43'</span></a>
+<a class="sourceLine" id="cb1-95" data-line-number="95"><span class="co">#&gt; (as 'lib' is unspecified)</span></a>
+<a class="sourceLine" id="cb1-96" data-line-number="96"></a>
+<a class="sourceLine" id="cb1-97" data-line-number="97"><span class="co">#load package</span></a>
+<a class="sourceLine" id="cb1-98" data-line-number="98"><span class="kw">library</span>(ozcovid)</a></code></pre></div>
 </div>
 <div id="functions-within-package" class="section level2">
 <h2>Functions within Package</h2>
