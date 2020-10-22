@@ -4,7 +4,7 @@
 \name{ozcovid-package}
 \alias{ozcovid}
 \alias{ozcovid-package}
-\title{ozcovid: Launch The Shiny Application 'Coronavirus In Australia'}
+\title{ozcovid: Launch The Shiny Application 'Coronavirus In Australia' to explore the pandemics' impact in Australia throughout 2020}
 \description{
 The package 'ozcovid' contains a function entitled `launch_app()` which launches the shiny application 'Coronavirus In Australia' - the application allows the user to interact with (by selecting their state/territory or date of choice) and investigate Australia's coronavirus data.
 }
