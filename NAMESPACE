@@ -3,5 +3,8 @@
 export(launch_app)
 export(stateSelectInput)
 export(vicEventRenderText)
+import(coronavirus)
+import(dplyr)
 import(plotly)
 import(shiny)
+import(tidyr)

@@ -2,6 +2,11 @@
 #'
 #' This dataset contains Australia's daily and cumulative coronavirus data for 2020
 #' 
+#' @import 
+#' coronavirus
+#' dplyr
+#' tidyr
+#' 
 #' @format a tibble with 192 observations and 7 variables:
 #' 
 #' - **date**: the date on a particular day
