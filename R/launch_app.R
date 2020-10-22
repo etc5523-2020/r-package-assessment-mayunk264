@@ -5,7 +5,9 @@
 #' @return Executing this function will return the 'Coronavirus in Australia' shiny application.
 #' 
 #' @example
+#' \dontrun(
 #' launch_app()
+#' )
 #' 
 #' @import shiny
 #' 
