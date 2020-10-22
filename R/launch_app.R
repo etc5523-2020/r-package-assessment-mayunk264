@@ -1,8 +1,8 @@
 #' Launch the shiny application 'Coronavirus in Australia
 #' 
-#' @description This function launches the shiny application 'Coronavirus in Australia'. The app allows the user to interact with Australia's coronavirus data.
+#' @description This function launches the shiny application 'Coronavirus in Australia'. The app allows the user to interact with Australia's coronavirus data. There is no need to include an argument within the function when executing the function.
 #' 
-#' @return Executing this function will return the 'Coronavirus in Australia' shiny application. There is no need to include an argument within the function when executing the application.
+#' @return Executing this function will return the 'Coronavirus in Australia' shiny application.
 #' 
 #' @example
 #' \dontrun(
