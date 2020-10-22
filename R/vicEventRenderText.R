@@ -12,6 +12,7 @@
 #' 
 #' @import
 #' shiny
+#' plotly
 #' 
 #' 
 #' @export

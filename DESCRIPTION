@@ -17,7 +17,6 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    plotly,
     lubridate,
     shinydashboard,
     kableExtra,
@@ -27,5 +26,6 @@ Suggests:
     coronavirus
 VignetteBuilder: knitr
 Imports: 
-    shiny
+    shiny,
+    plotly
 
