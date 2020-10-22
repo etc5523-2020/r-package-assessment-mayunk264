@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Interact with Australia’s 2020 Coronavirus Data</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Interact with Australia’s 2020 Coronavirus Data</h1>
+
+
+
+<div id="welcome" class="section level2">
+<h2>Welcome</h2>
+<p>Welcome to the ‘ozcovid’ package! The purpose of this package is to allow you - the user - to interact with Australia’s 2020 coronavirus data. The package aims to do this in two main ways - a shiny application called ‘Coronavirus in Australia’ and a dataset called ‘oz_covid_data’.</p>
+</div>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<p>First you will need to install and load the package. See below:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">#install package</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;etc5523-2020/r-package-assessment-mayunk264&quot;</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; Using github PAT from envvar GITHUB_PAT</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; Downloading GitHub repo etc5523-2020/r-package-assessment-mayunk264@HEAD</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt; xfun    (0.16  -&gt; 0.18 ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt; stringi (1.4.6 -&gt; 1.5.3) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt; knitr   (1.29  -&gt; 1.30 ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; clipr   (0.7.0 -&gt; 0.7.1) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt; DT      (0.15  -&gt; 0.16 ) [CRAN]</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt; Installing 5 packages: xfun, stringi, knitr, clipr, DT</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt; Installing packages into '/private/var/folders/gs/wh76gs7n2gsfbf9rqzrg1ygm0000gn/T/RtmpSNipld/temp_libpathf604dad30e7'</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt; (as 'lib' is unspecified)</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt; The downloaded binary packages are in</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt;  /var/folders/gs/wh76gs7n2gsfbf9rqzrg1ygm0000gn/T//RtmpSNipld/downloaded_packages</span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt;   </span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">   checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>gs<span class="op">/</span>wh76gs7n2gsfbf9rqzrg1ygm0000gn<span class="op">/</span>T<span class="op">/</span>RtmpSNipld<span class="op">/</span>remotesf60457f8a63c<span class="op">/</span>etc5523<span class="dv">-2020</span><span class="op">-</span>r<span class="op">-</span>package<span class="op">-</span>assessment<span class="op">-</span>mayunk264<span class="op">-</span>49c82eb<span class="op">/</span>DESCRIPTION’ ...</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">  </a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">✓  checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>gs<span class="op">/</span>wh76gs7n2gsfbf9rqzrg1ygm0000gn<span class="op">/</span>T<span class="op">/</span>RtmpSNipld<span class="op">/</span>remotesf60457f8a63c<span class="op">/</span>etc5523<span class="dv">-2020</span><span class="op">-</span>r<span class="op">-</span>package<span class="op">-</span>assessment<span class="op">-</span>mayunk264<span class="op">-</span>49c82eb<span class="op">/</span>DESCRIPTION’</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">  </a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">─  preparing ‘ozcovid’<span class="op">:</span></a>
+<a class="sourceLine" id="cb1-23" data-line-number="23"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-24" data-line-number="24"><span class="st">  </span></a>
+<a class="sourceLine" id="cb1-25" data-line-number="25"><span class="st">   </span>checking DESCRIPTION meta<span class="op">-</span>information ...</a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">  </a>
+<a class="sourceLine" id="cb1-27" data-line-number="27">✓  checking DESCRIPTION meta<span class="op">-</span>information</a>
+<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-29" data-line-number="29">  </a>
+<a class="sourceLine" id="cb1-30" data-line-number="30">─  checking <span class="cf">for</span> LF line<span class="op">-</span>endings <span class="cf">in</span> source and make files and shell scripts</a>
+<a class="sourceLine" id="cb1-31" data-line-number="31"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-32" data-line-number="32">  </a>
+<a class="sourceLine" id="cb1-33" data-line-number="33">─  checking <span class="cf">for</span> empty or unneeded directories</a>
+<a class="sourceLine" id="cb1-34" data-line-number="34"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-35" data-line-number="35">  </a>
+<a class="sourceLine" id="cb1-36" data-line-number="36">─  building ‘ozcovid_<span class="dv">0</span>.<span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">9000.</span>tar.gz’</a>
+<a class="sourceLine" id="cb1-37" data-line-number="37"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-38" data-line-number="38">  </a>
+<a class="sourceLine" id="cb1-39" data-line-number="39">   </a>
+<a class="sourceLine" id="cb1-40" data-line-number="40"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-41" data-line-number="41"><span class="co">#&gt; Installing package into '/private/var/folders/gs/wh76gs7n2gsfbf9rqzrg1ygm0000gn/T/RtmpSNipld/temp_libpathf604dad30e7'</span></a>
+<a class="sourceLine" id="cb1-42" data-line-number="42"><span class="co">#&gt; (as 'lib' is unspecified)</span></a>
+<a class="sourceLine" id="cb1-43" data-line-number="43"></a>
+<a class="sourceLine" id="cb1-44" data-line-number="44"><span class="co">#load package</span></a>
+<a class="sourceLine" id="cb1-45" data-line-number="45"><span class="kw">library</span>(ozcovid)</a></code></pre></div>
+</div>
+<div id="functions-within-package" class="section level2">
+<h2>Functions within Package</h2>
+<div id="load_app-function" class="section level3">
+<h3>load_app() function</h3>
+<p>The load_app() function is the centrepiece of the package. When executed, the function will return a Shiny application entitled ‘Coronavirus in Australia’.</p>
+<p>There are three main sections of the application:</p>
+<ol style="list-style-type: decimal">
+<li>Confirmed Cases by state: a graph displaying confirmed coronavirus cases by state over time where the user is able to select their state of interest.</li>
+<li>Coronavirus Summary Table: a table which displays daily and cumulative coronavirus confirmed cases, deaths and recoveries by date where the user is able to select their date of interest.</li>
+<li>Deaths In Victoria: an interative graph of Victoria’s coronavirus-related deaths where the user is able to click on a data point of their choice which in turn generates a sentence desrcibing the date and the deaths that occured on that date in Victoria.</li>
+</ol>
+<p>The application can be executed as such:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">#launch the Shiny application</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">ozcovid<span class="op">::</span><span class="kw">launch_app</span>()</a></code></pre></div>
+</div>
+<div id="oz_covid_data-dataset" class="section level3">
+<h3>oz_covid_data dataset</h3>
+<p>The ‘oz_covid_data’ data table summarises Australia’s 2020 coronavirus data.</p>
+<p>The dataset is a processed version of Rami Krispin’s coronavirus’ dataset from the <a href="https://github.com/RamiKrispin/coronavirus.">‘coronavirus’ package</a>. If the dataset looks familar to you, it is because it is inspired by the ‘Coronavirus Summary Table’ from the ‘Coronavirus in Australia’ Shiny application.</p>
+<p>The dataset contains a date variable and corresponding variables for total ‘Daily Confirmed’ coronavirus cases, ‘Daily Death’ related to coronavirus, ‘Daily Recovered’ coronavirus cases, ‘Cumulative Confirmed’ coronavirus cases, ‘Cumulative Deaths’ related to coronavirus and ‘Cumulative Recovered’ coronavirus cases. The ‘date’ column is of type <date> and the remaining columns are of type <int>.</p>
+<p>The dataset can be generated like so:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">#generate the oz_covid_data dataset</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">ozcovid<span class="op">::</span>oz_covid_data</a></code></pre></div>
+</div>
+<div id="stateselectinput-and-vicrendertext-functions" class="section level3">
+<h3>stateSelectInput() and vicRenderText() functions</h3>
+<p>The ‘stateSelectInput’ and ‘vicRenderText’ functions are functions that contain refactored code from the user interface and server logic of the Shiny application ‘Coronavirus in Australia’</p>
+<p>These two functions - when executed in the console - will not generate anything meaningful for a user looking to only interact with the Shiny app or dataset. However, if a user is looking to use the code underlying the function to assist in the generation of their own Shiny application, the code may be of use.</p>
+</div>
+</div>
+<div id="issues" class="section level2">
+<h2>Issues</h2>
+<p>If you have any issues you would like to submit, please do so in the <a href="https://github.com/etc5523-2020/r-package-assessment-mayunk264/issues">Issues tab of the package’s GitHub repository</a>.</p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
