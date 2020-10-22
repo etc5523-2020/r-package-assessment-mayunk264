@@ -12,8 +12,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Australia's Coronavirus data — oz_covid_data" />
-<meta property="og:description" content="The dataset contains a date variable and corresponding variables for total 'Daily Confirmed' coronavirus cases, 'Daily Death' related to coronavirus, 'Daily Recovered' coronavirus cases, 'Cumulative Confirmed' coronavirus cases, 'Cumulative Deaths' related to coronavirus and 'Cumulative Recovered' coronavirus cases. The 'date' column is of type &amp;lt;date&amp;gt; and the remaining columns are of type &amp;lt;int&amp;gt;." />
+<meta property="og:description" content="This dataset contains Australia's daily and cumulative coronavirus data for 2020" />
 
 
 
@@ -112,7 +112,7 @@
     </div>
 
     <div class="ref-description">
-    <p>The dataset contains a date variable and corresponding variables for total 'Daily Confirmed' coronavirus cases, 'Daily Death' related to coronavirus, 'Daily Recovered' coronavirus cases, 'Cumulative Confirmed' coronavirus cases, 'Cumulative Deaths' related to coronavirus and 'Cumulative Recovered' coronavirus cases. The 'date' column is of type &lt;date&gt; and the remaining columns are of type &lt;int&gt;.</p>
+    <p>This dataset contains Australia's daily and cumulative coronavirus data for 2020</p>
     </div>
 
     <pre class="usage"><span class='va'>oz_covid_data</span></pre>
@@ -120,13 +120,19 @@
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 192 rows and 7 columns.</p>
+    <p>a tibble with 192 observations and 7 variables:</p><ul>
+<li><p><strong>date</strong>: the date on a particular day</p></li>
+<li><p><strong>'Daily Confirmed'</strong>: the daily confirmed coronavirus cases in Australia on that given date</p></li>
+<li><p><strong>'Daily Death'</strong>: the daily confirmed coronavirus deaths in Australia on that given date</p></li>
+<li><p><strong>'Daily Recovered'</strong>: the daily confirmed coronavirus drecoveries in Australia on that given date</p></li>
+<li><p><strong>'Cumulative Confirmed'</strong>: the cumulative confirmed coronavirus cases in Australia on that given date</p></li>
+<li><p><strong>'Cumulative Deaths'</strong>: the cumulative confirmed coronavirus deaths in Australia on that given date</p></li>
+<li><p><strong>'Cumulative Recovered'</strong>: the cumulative confirmed coronavirus recoveries in Australia on that given date</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>The dataset is a processed version of Rami Krispin's c'oronavirus' dataset from the 'coronavirus package' which can be found here: https://github.com/RamiKrispin/coronavirus</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This dataset contains Australia's daily and cumulative coronavirus data for 2020</p>
+    <p>The dataset is a processed version of Rami Krispin's 'coronavirus' dataset from the 'coronavirus package' which can be found here: https://github.com/RamiKrispin/coronavirus</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
