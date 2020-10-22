@@ -20,12 +20,13 @@ Suggests:
     lubridate,
     shinydashboard,
     kableExtra,
-    tidyr,
     ggplot2,
+    tidyr,
     dplyr,
     coronavirus
 VignetteBuilder: knitr
 Imports: 
     shiny,
     plotly
-
+Depends: 
+    R (>= 2.10)
