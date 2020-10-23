@@ -1,6 +1,6 @@
 #' Australia's Coronavirus data
 #'
-#' This dataset contains Australia's daily and cumulative coronavirus data for 2020
+#' @description This dataset contains Australia's daily and cumulative coronavirus data for 2020
 #' 
 #' @import 
 #' coronavirus
