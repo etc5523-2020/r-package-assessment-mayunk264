@@ -1,14 +1,15 @@
 Package: ozcovid
-Title: Launch The Shiny Application 'Coronavirus In Australia' to explore the pandemics' impact in Australia throughout 2020
-Version: 0.0.0.9000
+Title: Interact with and investigate Australia's 2020 coronavirus data  to understand the pandemic's impact on the country
+Version: 1.0.0.0000
 Authors@R: 
     person(given = "Mayunk",
            family = "Bharadwaj",
            role = c("aut", "cre"),
            email = "mbha0014@student.monash.edu",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: The package 'ozcovid' contains a function entitled `launch_app()` which launches the shiny application 'Coronavirus In Australia' - the application allows the user to interact with (by selecting their state/territory or date of choice) and investigate Australia's coronavirus data.
+Description: The package 'ozcovid' contains three functions and a dataset: a function entitled `launch_app` which launches the shiny application 'Coronavirus In Australia' - the application allows the user to interact with (by selecting their state/territory or date of choice) and investigate Australia's coronavirus data. The dataset 'oz_covid_data' allows the user work with the data underlying the shiny app. The functions 'stateSelectInput' and 'vicEventRenderText' contain refactored code from the ui and server components of the Shiny application.
 License: GPL-3
+BugReports: https://github.com/etc5523-2020/r-package-assessment-mayunk264/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
