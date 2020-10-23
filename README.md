@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![R build
+status](https://github.com/etc5523-2020/r-package-assessment-mayunk264/workflows/R-CMD-check/badge.svg)](https://github.com/etc5523-2020/r-package-assessment-mayunk264/actions)
 <!-- badges: end -->
 
 The goal of ozcovid is to allow the user to explore Australia’s
