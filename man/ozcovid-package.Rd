@@ -4,9 +4,16 @@
 \name{ozcovid-package}
 \alias{ozcovid}
 \alias{ozcovid-package}
-\title{ozcovid: Launch The Shiny Application 'Coronavirus In Australia' to explore the pandemics' impact in Australia throughout 2020}
+\title{ozcovid: Interact with and investigate Australia's 2020 coronavirus data  to understand the pandemic's impact on the country}
 \description{
-The package 'ozcovid' contains a function entitled `launch_app()` which launches the shiny application 'Coronavirus In Australia' - the application allows the user to interact with (by selecting their state/territory or date of choice) and investigate Australia's coronavirus data.
+The package 'ozcovid' contains three functions and a dataset: a function entitled `launch_app` which launches the shiny application 'Coronavirus In Australia' - the application allows the user to interact with (by selecting their state/territory or date of choice) and investigate Australia's coronavirus data. The dataset 'oz_covid_data' allows the user work with the data underlying the shiny app. The functions 'stateSelectInput' and 'vicEventRenderText' contain refactored code from the ui and server components of the Shiny application.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item Report bugs at \url{https://github.com/etc5523-2020/r-package-assessment-mayunk264/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Mayunk Bharadwaj \email{mbha0014@student.monash.edu} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
